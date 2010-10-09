@@ -1,6 +1,6 @@
 {
     "editor.detectIndentation": false,
-    "python.pythonPath": "C:\\Program Files (x86)\\Python\\Python38-32\\python.exe",
+    "python.pythonPath": "c:\\Users\\KevinKeven\\Desktop\\PYTHON\\Django environement\\django_pro_tuto\\Scripts\\python.exe",
     "python.linting.pylintEnabled": true,
     "python.linting.enabled": true
 }

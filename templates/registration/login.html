@@ -4,7 +4,7 @@
 
 {% block title %} Login - {{ block.super }}{% endblock %}
 {% block link %}
-	<link href="https://github.com/kevinkeven/mytodo/blob/master/static/css/sign-in.css" rel="stylesheet" type="text/css">
+	<link href="{% static 'css/sign-in.css' %}" rel="stylesheet">
 {% endblock %}
 {% block content %}
 	<div class="mt-5">

@@ -4,7 +4,7 @@
 
 {% block title %} New Todo - {{ block.super }}{% endblock %}
 {% block link %}
-	<link href="https://github.com/kevinkeven/mytodo/blob/master/static/css/sign-up.css" rel="stylesheet" type="text/css">
+	<link href="{% static 'css/sign-up.css' %}" rel="stylesheet">
 {% endblock %}
 {% block content %}
 	<div class="row">
@@ -25,8 +25,8 @@
 			  <li class="list-group-item border-0 text-success">5: Vestibulum at eros</li>
 			</ul>
 		</div>
-		<div class="col-md-8 border">
-			<div class="mt-2">
+		<div class="col-md-8 shadow-sm">
+			<div class="mt-5">
 				<form class="form-signin bg-white pl-4 pr-4" method="post">
 					<h1 class="h3 mb-3 font-weight-normal">Create your New Todo</h1>
 					{% csrf_token %}
