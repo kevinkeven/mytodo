@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% 	block title %}New Profile - {{ block.super }}{% endblock %}
+{% block link %}
+	<link href="{% static 'css/new_prof.css' %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+	<div class="mt-5">
+		<form class="form-signin shadow bg-white pl-4 pr-4 border border-left-0 border-bottom-0 border-right-0 border-dark" method="post" enctype="multipart/form-data">
+			<h1 class="h3 mb-3 font-weight-normal">Create New Profile</h1>
+			<p class="lead">We've emailed you instructions for setting your password. You should receive the email shortly!</p>
+			{% csrf_token %}
+			{% crispy form %}
+		</form>
+	</div>
+{% endblock %}

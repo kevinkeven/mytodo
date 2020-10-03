@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ todo.title }} - {{ block.super }}{% endblock %}
+{% block col %}col-sm-10{% endblock %}
+{% block content %}
+<div class="row mb-3">
+	{% if todo.active != False %}
+	<div class="col-sm-4 bg-light">
+		<div class="mt-5">
+			<h5>Hello! {{ request.user.username }}</h5>
+			<hr>
+			<div class="bg-white p-2 mb-2">
+				<h6>Have Your Accomplished this task ?:</h6>
+				<div class="custom-control custom-radio">
+				  <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
+				  <label class="custom-control-label" for="customRadio1">Yes</label>
+				</div>
+				<div class="custom-control custom-radio">
+				  <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input" checked>
+				  <label class="custom-control-label" for="customRadio2">No</label>
+				</div>
+			</div>
+			<p class="text-muted">
+				Your can change your settings when your feel like your want it through:
+			</p>
+			<h6>Trending Qoutes<span class="fa fa-fire"></span>:</h6>
+			<ul class="list-group">
+			  <li class="list-group-item border-0 text-success">1: Nzabikora mn bifata igihe</li>
+			  <li class="list-group-item border-0 text-success">2: Time lost never be found</li>
+			  <li class="list-group-item border-0 text-success">3: Morbi leo risus</li>
+			  <li class="list-group-item border-0 text-success">4: Porta ac consectetur ac</li>
+			  <li class="list-group-item border-0 text-success">5: Vestibulum at eros</li>
+			</ul>
+		</div>
+	</div>
+  	{% endif %}
+	<div class="col-sm-8">
+		<div class="card bg-white border-0">
+			<div class="card-header d-flex justify-content-between border bg-light text-dark">
+				<div>
+					<small>I Want To {{  todo.title }}</small>
+				</div>
+				<div>
+					<small>{{ todo.created }}</small>
+				</div>
+			</div>
+			<div class="card-body p-5">
+			    <h5 class="card-title">{{  todo.title }}</h5>
+			    <h6>{{ todo.now }}</h6>
+				<p class="card-text lead">
+					{{ todo.description|linebreaks }}
+					
+					<blockquote class="blockquote text-center border-left p-3 border-dark">
+					  <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+					  <footer class="blockquote-footer">Kevin killa <cite title="Source Title">Fb: kevin August</cite>	</footer>
+					</blockquote>
+					{% lorem 5 p %}
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

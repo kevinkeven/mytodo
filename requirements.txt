@@ -1,0 +1,11 @@
+asgiref==3.2.10
+Django==3.1.1
+django-crispy-forms==1.9.2
+django-heroku==0.3.1
+gunicorn==20.0.4
+Pillow==7.2.0
+psycopg2==2.8.6
+pytz==2020.1
+reportlab==3.5.50
+sqlparse==0.3.1
+

@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ block.super }}{% endblock %}
+
+{% block content %}
+<div class="row">
+	<div class="col-md-12 py-1">
+		<div class="alert alert-light border-left border-dark" role="alert">
+		  Your can <a href="{% url 'to_do:todo_create' %}" class="card-link">Add</a> Your New Todo list and Continue with all other cool Stuff {{ request.user.first_name }} {{ request.user.last_name }}
+		</div>
+	</div>
+</div>
+<div class="row mb-3">
+	{% if completed %}
+	<div class="col-sm-4 p-4">
+		<div class="container">
+			<div class="d-flex justify-content-between">
+				<h5 class="mb-3">Completed Tasks <span class="fa fa-check text-success"></span></h5>
+			</div>
+			<hr>
+			<ul class="list-group">
+			{% for mine in completed %}
+			  <li class="list-group-item d-flex justify-content-between align-items-center border-0 bg-light">
+			  	<div>
+			  		{{ forloop.counter }} . 
+			  		<a href="{{ mine.get_absolute_url }}" class="card-link">
+			  			{{ mine.title }} <span class="fa fa-check"></span>
+			  		</a>
+			  	</div>
+			  </li>
+			{% endfor %}
+			</ul>
+		</div>
+	</div>
+  {% endif %}
+	<div class="{% if not completed %}col-sm-12{% else %}col-sm-8 p-4 bg-light{% endif %}">
+		<div class="container">
+			<div class="d-flex justify-content-between">
+				<h5 class="mb-3">Tasks In progress  <span class="fa fa-battery-4"></span></h5>
+				<h6 class="mb-3 text-muted">Created At</h6>
+			</div>
+			<hr>
+			<!--<div class="mb-3 d-flex justify-content-center">
+				<a href="{% url 'to_do:todo_create' %}" class="btn btn-primary">
+					Add new
+				</a>
+			</div>-->
+			<ul class="list-group">
+			{% for mine in what_to_do%}
+			  <li class="list-group-item d-flex justify-content-between align-items-center border-0 bg-light">
+			  	<div>
+			  		{{ forloop.counter }} . 
+			  		<a href="{{ mine.get_absolute_url }}" class="card-link">
+			  			{{ mine.title }}
+			  		</a>
+			  	</div>
+			    <span class="text-muted"><small class="text-muted">{{ mine.created|timesince }} ago</small></span>
+			  </li>
+			{% empty %}
+			  <li class="list-group-item d-flex justify-content-between align-items-center">
+			    <p class="text-muted">You have nothing To do</p>
+			    <a href="{% url 'to_do:todo_create' %}">
+				    <button type="button" class="btn btn-dark">
+					  <span class="fa fa-plus-circle"></span>
+					</button>
+				</a>
+			  </li>
+			{% endfor %}
+			</ul>
+		</div>
+	</div>
+</div>
+{% endblock %}
