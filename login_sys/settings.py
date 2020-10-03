@@ -107,6 +107,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 LOGIN_URL = 'user:login'
+LOGIN_REDIRECT_URL = 'to_do:todo_list'
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
