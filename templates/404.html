@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Not found {{ block.super }}{% endblock %}
+
+{% block content %}
+<div class="row mb-3">
+	<div class="col-sm-12 border">
+		<div class="container">
+			<div class="mb-3 justify-content-center">
+				<h1>Page Not Found</h1>
+				<p>Oooops! seems the page corresponding to this url does not exist</p>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

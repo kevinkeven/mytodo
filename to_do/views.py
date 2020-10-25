@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import generic
 from django.urls import reverse_lazy, reverse
 from .models import Todo
@@ -19,10 +19,9 @@ class TodoListView(LoginRequiredMixin, generic.ListView):
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data(**kwargs)
         ctx['completed'] = Todo.done.all().filter(owner=self.request.user)
-        #ctx['profile'] = Profile.objects.all().filter(owner=self.request.user)
         return ctx
 
-class TodoDetailView(LoginRequiredMixin, generic.FormView, generic.DetailView):
+class TodoDetailView(LoginRequiredMixin, generic.UpdateView, generic.DetailView):
     model = Todo
     template_name = 'to_do/todo_detail.html'
     form_class = TodoActiveForm
@@ -31,14 +30,16 @@ class TodoDetailView(LoginRequiredMixin, generic.FormView, generic.DetailView):
         ctx = super().get_context_data(**kwargs)
         ctx['active'] = self.get_form()
         return ctx
-    
-    def post(self, request):
-        if 'YES' in request.POST:
-            form = self.get_form(request.POST)
-            if form.is_valid():
-                mine = self.object
-                mine.active = False
-                mine.save()
+
+    def form_valid(self, form):
+        self.object = self.get_object()
+        if self.object.active == True:
+            self.object.active = False
+        else:
+            self.object.active = True
+        form.save()
+
+        return redirect(reverse_lazy('to_do:todo_list'))
     
     def get_success_utl(self):
         return  reverse_lazy('to_do:todo_list')

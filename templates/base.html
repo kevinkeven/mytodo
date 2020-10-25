@@ -25,7 +25,7 @@
                 <a class="p-2 text-dark" href="{% url 'to_do:todo_create' %}"><span class="fa fa-plus-circle"> New todo</a>
                 <a class="p-2 text-dark" href="">Blog</a>
             </nav>
-                <a class="btn btn-outline-dark" href="{% url 'user:logout' %}">Logout</a>
+                <a class="btn btn-outline-dark" href="{% url 'users:logout' %}">Logout</a>
             {% else %}
                 <a class="btn btn-outline-dark mr-2 btn-sm" href="{% url 'login' %}">Sign in</a>
                 <a class="btn btn-dark" href="{% url 'users:signup' %}">Create Account</a>
@@ -38,7 +38,7 @@
                 <div class="row">
                     <div class="col-12 col-md">
                         <img class="mb-2" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="24" height="24">
-                        <small class="d-block mb-3 text-muted">&copy; 2017-2018</small>
+                        <small class="d-block mb-3 text-muted">&copy; 2020</small>
                     </div>
                     <div class="col-6 col-md">
                         <h5>Features</h5>
